@@ -67,6 +67,7 @@ public class FileReader {
         ArrayList<String> englishList = new ArrayList<>();
         ArrayList<String> polishList = new ArrayList<>();
         HashSet<String> languages = new HashSet<>();
+        System.out.println(input.next());
         languages.add(input.next());
         languages.add(input.next());
         int x=0;
