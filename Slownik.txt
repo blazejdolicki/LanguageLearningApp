@@ -1,0 +1,115 @@
+English	Polish	persistent	trwa³y
+English	Polish	residual	pozosta³y
+English	Polish	reticular	siatkowaty
+English	Polish	arousal	pobudzenie
+English	Polish	suppress	st³umiæ
+English	Polish	nuisance	k³opot
+English	Polish	plasticity	plastycznoœæ
+English	Polish	convolutional	splotowy
+English	Polish	attenuate	os³abiaæ
+English	Polish	rhinal	nosowy
+English	Polish	consolidation	umacnianie
+English	Polish	acquisition	nabycie
+English	Polish	cue	wskazówka
+English	Polish	vigilant	czujny
+English	Polish	vicinity	s¹siedztwo
+English	Polish	aberrant	anormalny
+English	Polish	onset	pocz¹tek
+English	Polish	interfere	kolidowaæ
+English	Polish	disrupt	zak³ócaæ
+English	Polish	insulate	izolowaæ
+English	Polish	focal	ogniskowy
+English	Polish	perturb	zaburzyæ
+English	Polish	transient	przejœciowy
+English	Polish	significant	znacz¹cy
+English	Polish	salient	wyró¿niaj¹cy siê
+English	Polish	susceptible	podatny
+English	Polish	lesion	zmiana chorobowa
+English	Polish	derive	czerpaæ
+English	Polish	tease	droczyæ siê
+English	Polish	intact	nienaruszony
+Polish	English	p³ytki	shallow
+English	Polish	reluctant	niechêtny
+English	Polish	prevalent	rozpowszechniony
+English	Polish	amplify	wzmacniaæ
+English	Polish	threshold	próg
+English	Polish	confine	ograniczaæ
+English	Polish	diminish	zmniejszaæ
+English	Polish	decremental	spadkowy
+English	Polish	knob	pokrêt³o
+English	Polish	encase	oblec
+English	Polish	elucidate	wyjaœniaæ
+English	Polish	intricate	zawi³y
+English	Polish	grid	krata
+English	Polish	cortical	korowa
+English	Polish	pituitary	przysadka
+English	Polish	endocrine system	uk³ad hormonalny
+English	Polish	relay	przekazaæ
+English	Polish	straddle	rozkraczyæ siê
+English	Polish	auditory	s³uchowy
+English	Polish	cranial	czaszkowy
+English	Polish	smack dab	smack dab
+English	Polish	prominent	wybitny
+English	Polish	gland	gruczo³
+English	Polish	tract	obszar
+English	Polish	allotment	przydzia³
+English	Polish	deduct	odj¹æ
+English	Polish	levied	pobrany
+English	Polish	substantial	znaczny
+English	Polish	rigid	sztywny
+English	Polish	vengeance	zemsta
+English	Polish	convicted	skazany
+English	Polish	lumpy	grudkowaty
+English	Polish	albumin	albumina
+English	Polish	saturated	nasycony
+English	Polish	resilience	sprê¿ystoœæ
+English	Polish	distinct	odrêbny
+English	Polish	profound	g³êboki
+English	Polish	sassy	impertynencki
+English	Polish	contempt	pogarda
+English	Polish	vocation	powo³anie
+English	Polish	relentless	bezwzglêdny
+English	Polish	confound	zawieœæ
+English	Polish	tainted	ska¿ony
+English	Polish	to arouse someone	podnieciæ kogoœ
+English	Polish	conviction	przekonanie
+English	Polish	successor	nastêpca
+English	Polish	attuned	przystosowany
+English	Polish	principle	zasada
+English	Polish	gratitude	wdziêcznoœæ
+English	Polish	compassion	wspó³czucie
+English	Polish	contribute	przyczyniæ siê
+English	Polish	retrieve	odzyskaæ
+English	Polish	yield	przynieœæ
+English	Polish	relevant	stosowny
+English	Polish	welfare	dobrobyt
+English	Polish	solely	wy³¹cznie
+English	Polish	slack	luŸny
+English	Polish	invoke	odwo³aæ siê
+English	Polish	deliberate	celowy
+English	Polish	constraints	ograniczenia
+English	Polish	capacity	Pojemnoœæ
+English	Polish	feasible	wykonalny
+English	Polish	divine	boski
+English	Polish	eternal	wieczny
+English	Polish	plausible	wiarygodny
+English	Polish	anguished	udrêczony
+English	Polish	superficial	powierzchowny
+English	Polish	contaminate	zanieczyœciæ
+English	Polish	distinguish	rozró¿niaæ
+English	Polish	invincible	niezwyciê¿ony
+English	Polish	claim	domagaæ siê
+English	Polish	insist	obstawaæ
+English	Polish	stumpy	krêpy
+English	Polish	hothead	porywczy
+English	Polish	solace	pociecha
+English	Polish	landlord	gospodarz
+English	Polish	emanate	pochodziæ
+English	Polish	assumption	za³o¿enie
+English	Polish	wrath	gniew
+English	Polish	greed	chciwoœæ
+English	Polish	back off	wycofaæ
+English	Polish	survey	przegl¹d
+English	Polish	omission	pominiêcie
+English	Polish	reveal	ods³oniæ
+English	Polish	gaps in the data	braki w danych
