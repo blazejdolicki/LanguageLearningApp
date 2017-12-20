@@ -1,7 +1,8 @@
 package Backend;
 
-import java.util.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class LearnEnglishGUI{
