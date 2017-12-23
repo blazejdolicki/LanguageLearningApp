@@ -7,14 +7,14 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Exercise{
+public class OldExercise {
     private static int numberOfClues=0;
     private static Random random = new Random();
     private static ArrayList<Integer> randomIndices = new ArrayList<>();
     private static LinkedHashMap<String, String> words = new LinkedHashMap<>();
 
 
-    public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
+    public static void printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
         FileReader fileReader = new FileReader();
         ArrayList<String> translatedLanguage = fileReader.getLanguagesList().get(translatedLanguageString);
         ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
@@ -43,28 +43,27 @@ public class Exercise{
             }
             else{
                 String wordOutput = translatedLanguage.get(randomIndex);
-                words.put(wordOutput,"");
+                System.out.println(i+1+".");
+                System.out.println(wordOutput);
                 randomIndices.add(randomIndex);
 
-//                String wordInput = input2.next();
-//                String correctAnswer = inputLanguage.get(randomIndices.get(i));
-//                if(wordInput.equals("clue")){
-//                    wordInput = printClue(correctAnswer, wordInput,input2);
-//                }
-//                int stringSize = correctAnswer.split(" ").length;
-//                for(int j=0;j<stringSize-1;j++){
-//                    String newInput=input2.next();
-//                    wordInput = wordInput+" "+newInput;
-//                }
-//
-//                words.put(wordOutput, wordInput);
-//                System.out.println("");
+                String wordInput = input2.next();
+                String correctAnswer = inputLanguage.get(randomIndices.get(i));
+                if(wordInput.equals("clue")){
+                    wordInput = printClue(correctAnswer, wordInput,input2);
+                }
+                int stringSize = correctAnswer.split(" ").length;
+                for(int j=0;j<stringSize-1;j++){
+                    String newInput=input2.next();
+                    wordInput = wordInput+" "+newInput;
+                }
+
+                words.put(wordOutput, wordInput);
+                System.out.println("");
             }
         }
-
         input2.close();
-        return words;
-        // results(inputLanguage,probabilityArray, numberOfWords);
+        results(inputLanguage,probabilityArray, numberOfWords);
         // words should first be used to get an arraylist of outputwords
         //then to each outputword an inputword should be assigned
     }
@@ -148,4 +147,6 @@ public class Exercise{
         wordInput=input2.next();
         return wordInput;
     }
+
+
 }

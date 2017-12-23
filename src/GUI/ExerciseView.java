@@ -13,8 +13,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class ExerciseView extends GridPane{
@@ -30,9 +32,18 @@ public class ExerciseView extends GridPane{
         Label description = new Label("Translate to "+ inputLanguage);
         description.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
         add(description,0,0);
-        for(int i=1;i<=numberOfWords;i++){
 
-            Label wordOutput = new Label("wordOutput"+i); // test text
+        LinkedHashMap<String, String> words = new LinkedHashMap<>();
+        try{
+            words = Exercise.printExercise(numberOfWords, translatedLanguage, inputLanguage);
+        }
+        catch(FileNotFoundException e){
+            System.out.println("File not found");
+        }
+
+        for(int i=1;i<=numberOfWords;i++){
+            String outputText = (String)words.keySet().toArray()[i-1];
+            Label wordOutput = new Label(outputText); // test text
             add(wordOutput,0,i);
 
             TextField wordInput = new TextField();

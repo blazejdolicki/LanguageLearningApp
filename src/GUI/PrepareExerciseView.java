@@ -26,7 +26,7 @@ public class PrepareExerciseView extends GridPane{
         add(translateFrom,0,0);
 
         ComboBox fromComboBox = new ComboBox();
-        for(String language:fileReader.getLanguages()){
+        for(String language:fileReader.getLanguagesList().keySet()){
             fromComboBox.getItems().add(language);
         }
 
@@ -36,7 +36,7 @@ public class PrepareExerciseView extends GridPane{
         add(translateTo,0,1);
 
         ComboBox toComboBox = new ComboBox();
-        for(String language:fileReader.getLanguages()){
+        for(String language:fileReader.getLanguagesList().keySet()){
             toComboBox.getItems().add(language);
         }
         toComboBox.setPromptText("Choose language");

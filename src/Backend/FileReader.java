@@ -4,21 +4,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 
 public class FileReader {
-    private ArrayList<ArrayList<String>> languagesList;
-    private ArrayList<String> languages;
+    private LinkedHashMap<String, ArrayList<String>> languagesList;
     public FileReader() throws FileNotFoundException {
-        languagesList = new ArrayList<>();
+        languagesList = new LinkedHashMap<>();
         File file = new File("Slownik.txt");
         Scanner input = new Scanner(file);
-        ArrayList<String> englishList = new ArrayList<>();
-        ArrayList<String> polishList = new ArrayList<>();
-        languages = new ArrayList<>();
-        languages.add(input.next());
-        languages.add(input.next());
+        ArrayList<String> firstLanguageList = new ArrayList<>();
+        ArrayList<String> secondLanguageList = new ArrayList<>();
+        String firstLanguage = input.next();
+        String secondLanguage = input.next();
         int x=0;
         while(input.hasNextLine()){
             String line = input.nextLine();
@@ -27,20 +26,17 @@ public class FileReader {
             String english = parts[parts.length-2];
             String polish = parts[parts.length-1];
 
-            polishList.add(polish);
-            englishList.add(english);
+            secondLanguageList.add(polish);
+            firstLanguageList.add(english);
             x++;
         }
         input.close();
-        languagesList.add(englishList);
-        languagesList.add(polishList);
+        languagesList.put(firstLanguage, firstLanguageList);
+        languagesList.put(secondLanguage, secondLanguageList);
     }
 
-    public ArrayList<ArrayList<String>> getLanguagesList() {
+    public LinkedHashMap<String, ArrayList<String>> getLanguagesList() {
         return languagesList;
     }
 
-    public ArrayList<String> getLanguages() {
-        return languages;
-    }
 }

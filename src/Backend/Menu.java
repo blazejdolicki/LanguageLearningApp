@@ -10,7 +10,7 @@ public class Menu {
         System.out.println("Do you want to do an exercise?");
         String exercise = in.next();
         if(exercise.equals("yes")){
-            Exercise.printExercise(dictionary1, dictionary2);
+            // Exercise.printExercise(dictionary1, dictionary2);
         }
         else{
             System.out.println("Do you want to see the dictionary?");
