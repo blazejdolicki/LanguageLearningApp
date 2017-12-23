@@ -14,12 +14,9 @@ public class Exercise{
     private static LinkedHashMap<String, String> words = new LinkedHashMap<>();
 
     public static void printExercise(ArrayList<String> dictionary1, ArrayList<String> dictionary2) throws FileNotFoundException {
-
-        System.out.println("Write how many words do you want to translate: ");
-        Scanner in = new Scanner(System.in);
-        int numberOfWords = in.nextInt();
-        // test there
-        File file = new File("Backend.Probability.txt");
+        //test
+        int numberOfWords = 7;
+        File file = new File("Probability.txt");
         double[] probabilityArray = new double[dictionary1.size()];
         if(file.exists()){
             probabilityArray = Probability.readProbabilityArray(probabilityArray.length);

@@ -23,8 +23,13 @@ public class MenuView extends GridPane{
         exercise.setOnAction(new EventHandler<ActionEvent>() {
              @Override
              public void handle(ActionEvent event){
-                 PrepareExerciseView prepareView = new PrepareExerciseView();
-                 Main.getStage().setScene(new Scene(prepareView));
+                 try{
+                     PrepareExerciseView prepareView = new PrepareExerciseView();
+                     Main.getStage().setScene(new Scene(prepareView));
+                 }
+                 catch(IOException e){
+                     System.out.println("You fucked up");
+                 }
              }
          });
          add(exercise, 0, 0);
