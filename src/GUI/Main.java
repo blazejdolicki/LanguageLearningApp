@@ -23,7 +23,7 @@ public class Main extends Application{
         primaryStage.setScene(scene);
         primaryStage.setWidth(500);
         primaryStage.setHeight(500);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
         //put stage in the middle
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();

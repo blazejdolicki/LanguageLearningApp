@@ -7,14 +7,21 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+
 public class Exercise{
     private static int numberOfClues=0;
     private static Random random = new Random();
     private static ArrayList<Integer> randomIndices = new ArrayList<>();
-    private static LinkedHashMap<String, String> words = new LinkedHashMap<>();
+    private static LinkedHashMap<String, String> words;
+    private static double correctCounter=0;
+    private static double percent;
 
 
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
+        words = new LinkedHashMap<>();
         FileReader fileReader = new FileReader();
         ArrayList<String> translatedLanguage = fileReader.getLanguagesList().get(translatedLanguageString);
         ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
@@ -69,20 +76,35 @@ public class Exercise{
         //then to each outputword an inputword should be assigned
     }
 
-    public static void results(ArrayList<String> inputLanguage, double[] probabilityArray, int numberOfWords) throws FileNotFoundException{
-        System.out.println("");
-        System.out.println("RESULTS:");
-        System.out.println("");
+    // 23.12. results() has to much variables from Exercise class, so the method should return an array of 2 arrays
+    // first array has text for "your answer" labels and the second one for "correct answer" labels
+    public static Label[][] results(String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) throws FileNotFoundException{
+        FileReader fileReader = new FileReader();
+        ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
+        int numberOfWords = words.size();
+
+        int counter =0;
+        for(String key:words.keySet()){
+            words.put(key, textFields[counter].getText());
+            counter++;
+        }
+
+        Label[] userAnswers = new Label[words.size()];
+        Label[] correctAnswers = new Label[words.size()];
+        for(int y = 0; y<userAnswers.length;y++){
+            userAnswers[y] = new Label();
+        }
+
         int x =0;
-        double correctCounter=0;
+        double[] probabilityArray = Probability.readProbabilityArray(inputLanguage.size());
+
         for (String key : words.keySet() ) {
-            System.out.println(x+1+	". "+key+" ");
-            System.out.print("Your answer: "+words.get(key)+" ");
             String userInput = words.get(key);
             int globalIndex = randomIndices.get(x);
             String correctAnswer = inputLanguage.get(globalIndex);
+            correctAnswers[x] = new Label(correctAnswer);
+            correctAnswers[x].setTextFill(Color.GREEN);
             if(userInput.equals(correctAnswer)){
-                System.out.println("Correct!");
                 correctCounter++;
                 if(probabilityArray[globalIndex]==0.0){
                     probabilityArray[globalIndex]=1.0;
@@ -102,36 +124,32 @@ public class Exercise{
                         countTypo++;
                     }
                 }
-                if(countTypo==2){
-                    System.out.println("Correct, but there is a typo!");
-                    System.out.println("Correct answer: " + inputLanguage.get(randomIndices.get(x)));
+                if(countTypo<=2){
+                    userAnswers[x] = new Label(correctAnswer+" (typo)");
+                    userAnswers[x].setTextFill(Color.RED);
                     correctCounter+=0.5;
                 }
                 else{
-                    System.out.println("Incorrect :( ");
-                    System.out.println("Correct answer: " + inputLanguage.get(randomIndices.get(x)));
+                    userAnswers[x] = new Label(userInput);
+                    userAnswers[x].setTextFill(Color.RED);
                 }
             }
             else{
-                System.out.println("Incorrect :( ");
-                System.out.println("Correct answer: " + inputLanguage.get(randomIndices.get(x)));
+                userAnswers[x] = new Label(userInput);
+                userAnswers[x].setTextFill(Color.RED);
             }
             x++;
-            System.out.println("");
         }
         correctCounter=correctCounter-numberOfClues*0.5;
-        double percent = (correctCounter/numberOfWords)*100;
+        percent = (correctCounter/numberOfWords)*100;
         percent = Math.round(percent * 100);
         percent = percent/100;
-        System.out.println("You used "+numberOfClues+" clues.");
-        if(correctCounter%1.0==0){
-            int finalCorrectCounter = (int) correctCounter;
-            System.out.println("Correct answers: "+finalCorrectCounter+"/"+numberOfWords+" - " +percent+"%");
-        }
-        else{
-            System.out.println("Correct answers: "+correctCounter+"/"+numberOfWords+" - " +percent+"%");
-        }
+
         Probability.saveProbabilityArray(probabilityArray);
+        Label[][] resultsLabels = new Label[2][correctAnswers.length];
+        resultsLabels[0] = userAnswers;
+        resultsLabels[1] = correctAnswers;
+        return resultsLabels;
     }
 
     public static String printClue(String correctAnswer,String wordInput, Scanner input2){
@@ -147,5 +165,18 @@ public class Exercise{
         }
         wordInput=input2.next();
         return wordInput;
+    }
+
+    public static int getNumberOfClues(){
+        return numberOfClues;
+    }
+
+    public static double getCorrectCounter(){
+        return correctCounter;
+
+    }
+
+    public static double getPercent(){
+        return percent;
     }
 }

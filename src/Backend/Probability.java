@@ -10,7 +10,7 @@ public class Probability {
     // test after merge
     public static double[] readProbabilityArray(int dictionarySize) throws FileNotFoundException {
         double[] probabilityArray = new double[dictionarySize];
-        File file = new File("Backend.Probability.txt");
+        File file = new File("Probability.txt");
         Scanner input = new Scanner(file).useLocale(Locale.US);
         int x=0;
 
@@ -23,7 +23,7 @@ public class Probability {
     }
 
     public static void saveProbabilityArray(double[] array) throws FileNotFoundException{
-        PrintWriter writer = new PrintWriter("Backend.Probability.txt");
+        PrintWriter writer = new PrintWriter("Probability.txt");
         for(int x=0;x<array.length;x++){
             double probability=array[x];
             if(probability>=0){
