@@ -21,48 +21,45 @@ import java.util.LinkedHashMap;
 
 public class ResultsView extends GridPane{
     public ResultsView(String translatedLanguage, String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
+        Main.getStage().setWidth(600);
 
-        Label mistakes = new Label("Incorrect answers");
-        mistakes.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+
+        CustomLabel mistakes = new CustomLabel("Incorrect answers");
+        mistakes.setFont(Font.font("Verdana", FontWeight.BOLD, mistakes.getFontSize()));
         mistakes.setTextFill(Color.RED);
         add(mistakes,1,0);
 
 
-        Label correctAnswers = new Label("Correct answers");
-        correctAnswers.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+        CustomLabel correctAnswers = new CustomLabel("Correct answers");
+        correctAnswers.setFont(Font.font("Verdana", FontWeight.BOLD, correctAnswers.getFontSize()));
         correctAnswers.setTextFill(Color.GREEN);
         add(correctAnswers,2,0);
 
         for(int i=1;i<=words.size();i++){
             String outputText = (String)words.keySet().toArray()[i-1];
-            Label wordOutput = new Label(outputText+"\t\t");
+            CustomLabel wordOutput = new CustomLabel(outputText+"\t\t");
 
             add(wordOutput,0,i);
 
         }
 
-        try{
-            FileReader fileReader = new FileReader();
-            Label[][] resultsLabels = Exercise.results(inputLanguageString, words, textFields);
-            for(int i = 0;i<resultsLabels.length;i++){
-                for(int j = 0; j<resultsLabels[0].length;j++){
-                    System.out.println(i+1+" + "+(j+1));
-                    add(resultsLabels[i][j], i+1,j+1);
+        FileReader fileReader = new FileReader();
+        CustomLabel[][] resultsLabels = Exercise.results(inputLanguageString, words, textFields);
+        for(int i = 0;i<resultsLabels.length;i++){
+            for(int j = 0; j<resultsLabels[0].length;j++){
+                System.out.println(i+1+" + "+(j+1));
+                add(resultsLabels[i][j], i+1,j+1);
 
-                }
             }
         }
-        catch(FileNotFoundException e){
-            System.out.println("File not found");
-            e.printStackTrace();
-        }
 
-        Label cluesLabel = new Label();
+
+        CustomLabel cluesLabel = new CustomLabel();
         cluesLabel.setText("You used "+Exercise.getNumberOfClues()+" clues.");
         add(cluesLabel,1,words.size()+2);
         System.out.println(words.size());
 
-        Label summaryLabel = new Label();
+        CustomLabel summaryLabel = new CustomLabel();
         summaryLabel.setText("Correct answers: "+Exercise.getCorrectCounter()+"/"+words.size()+" - "+Exercise.getPercent()+"%");
         add(summaryLabel,1,words.size()+3);
 

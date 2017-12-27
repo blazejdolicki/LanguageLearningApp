@@ -15,6 +15,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import sun.text.resources.iw.FormatData_iw_IL;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,19 +28,24 @@ public class ExerciseView extends GridPane{
     private String translatedLanguage;
     private String inputLanguage;
     LinkedHashMap<String, String> words;
+    private int i;
+
 
     public ExerciseView(int numberOfWords, String translatedLanguage, String inputLanguage){
         this.numberOfWords =  numberOfWords;
         this.translatedLanguage = translatedLanguage;
         this.inputLanguage = inputLanguage;
 
+
         if(numberOfWords>5){
             Main.getStage().setWidth(700);
             Main.getStage().setHeight(700);
         }
 
-        Label description = new Label("Translate to "+ inputLanguage);
-        description.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+        Main.getStage().setWidth(800);
+
+        CustomLabel description = new CustomLabel("Translate to "+ inputLanguage);
+        description.setFont(Font.font("Verdana", FontWeight.BOLD, description.getFontSize()));
         add(description,0,0);
 
         try{
@@ -48,15 +55,32 @@ public class ExerciseView extends GridPane{
             System.out.println("File not found");
         }
         TextField[] textFields = new TextField[numberOfWords];
-        for(int i=1;i<=numberOfWords;i++){
+        i=1;
+        while(i<=numberOfWords){
             String outputText = (String)words.keySet().toArray()[i-1];
-            Label wordOutput = new Label(outputText); // test text
+            CustomLabel wordOutput = new CustomLabel(outputText); // test text
             add(wordOutput,0,i);
 
             TextField wordInput = new TextField();
             textFields[i-1]=wordInput;
             add(wordInput,2,i);
 
+            CounterButton clue = new CounterButton(i);
+            clue.setText("Clue");
+
+            CustomLabel clueLabel = new CustomLabel(i);
+            clue.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println(outputText);
+                    clueLabel.setText(Exercise.printClue(clueLabel.getIndex()-1, outputText, inputLanguage));
+                    int counterParameter = clue.getCounter();
+                    getChildren().remove(clue);
+                    add(clueLabel, 3, counterParameter);
+                }
+            });
+            add(clue, 3,i);
+            i++;
         }
 
 

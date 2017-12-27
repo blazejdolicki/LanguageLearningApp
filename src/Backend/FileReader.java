@@ -10,29 +10,36 @@ import java.util.Scanner;
 
 public class FileReader {
     private LinkedHashMap<String, ArrayList<String>> languagesList;
-    public FileReader() throws FileNotFoundException {
+    public FileReader() {
         languagesList = new LinkedHashMap<>();
         File file = new File("Slownik.txt");
-        Scanner input = new Scanner(file);
-        ArrayList<String> firstLanguageList = new ArrayList<>();
-        ArrayList<String> secondLanguageList = new ArrayList<>();
-        String firstLanguage = input.next();
-        String secondLanguage = input.next();
-        int x=0;
-        while(input.hasNextLine()){
-            String line = input.nextLine();
-            String[] parts = line.split("\t");
 
-            String english = parts[parts.length-2];
-            String polish = parts[parts.length-1];
+        try{
+            Scanner input = new Scanner(file);
+            ArrayList<String> firstLanguageList = new ArrayList<>();
+            ArrayList<String> secondLanguageList = new ArrayList<>();
+            String firstLanguage = input.next();
+            String secondLanguage = input.next();
+            int x=0;
+            while(input.hasNextLine()){
+                String line = input.nextLine();
+                String[] parts = line.split("\t");
 
-            secondLanguageList.add(polish);
-            firstLanguageList.add(english);
-            x++;
+                String english = parts[parts.length-2];
+                String polish = parts[parts.length-1];
+
+                secondLanguageList.add(polish);
+                firstLanguageList.add(english);
+                x++;
+            }
+            input.close();
+            languagesList.put(firstLanguage, firstLanguageList);
+            languagesList.put(secondLanguage, secondLanguageList);
         }
-        input.close();
-        languagesList.put(firstLanguage, firstLanguageList);
-        languagesList.put(secondLanguage, secondLanguageList);
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+
     }
 
     public LinkedHashMap<String, ArrayList<String>> getLanguagesList() {

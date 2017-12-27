@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+import GUI.CustomLabel;
+import GUI.Main;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -14,13 +16,15 @@ import javafx.scene.paint.Color;
 public class Exercise{
     private static int numberOfClues=0;
     private static Random random = new Random();
-    private static ArrayList<Integer> randomIndices = new ArrayList<>();
+    private static ArrayList<Integer> randomIndices;
     private static LinkedHashMap<String, String> words;
     private static double correctCounter=0;
     private static double percent;
+    private static ArrayList<String> correctAnswersList = new ArrayList<>();
 
 
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
+        randomIndices = new ArrayList<>();
         words = new LinkedHashMap<>();
         FileReader fileReader = new FileReader();
         ArrayList<String> translatedLanguage = fileReader.getLanguagesList().get(translatedLanguageString);
@@ -71,28 +75,23 @@ public class Exercise{
 
         input2.close();
         return words;
-        // results(inputLanguage,probabilityArray, numberOfWords);
-        // words should first be used to get an arraylist of outputwords
-        //then to each outputword an inputword should be assigned
     }
 
-    // 23.12. results() has to much variables from Exercise class, so the method should return an array of 2 arrays
-    // first array has text for "your answer" labels and the second one for "correct answer" labels
-    public static Label[][] results(String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) throws FileNotFoundException{
+    public static CustomLabel[][] results(String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) {
         FileReader fileReader = new FileReader();
         ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
         int numberOfWords = words.size();
 
         int counter =0;
         for(String key:words.keySet()){
-            words.put(key, textFields[counter].getText());
-            counter++;
+                words.put(key, textFields[counter].getText());
+                counter++;
         }
 
-        Label[] userAnswers = new Label[words.size()];
-        Label[] correctAnswers = new Label[words.size()];
+        CustomLabel[] userAnswers = new CustomLabel[words.size()];
+        CustomLabel[] correctAnswers = new CustomLabel[words.size()];
         for(int y = 0; y<userAnswers.length;y++){
-            userAnswers[y] = new Label();
+            userAnswers[y] = new CustomLabel();
         }
 
         int x =0;
@@ -101,8 +100,12 @@ public class Exercise{
         for (String key : words.keySet() ) {
             String userInput = words.get(key);
             int globalIndex = randomIndices.get(x);
+
             String correctAnswer = inputLanguage.get(globalIndex);
-            correctAnswers[x] = new Label(correctAnswer);
+            System.out.println(correctAnswer);
+            correctAnswersList.add(correctAnswer);
+            correctAnswers[x] = new CustomLabel(correctAnswer);
+            System.out.println("Corect"+correctAnswer+" "+globalIndex);
             correctAnswers[x].setTextFill(Color.GREEN);
             if(userInput.equals(correctAnswer)){
                 correctCounter++;
@@ -125,17 +128,17 @@ public class Exercise{
                     }
                 }
                 if(countTypo<=2){
-                    userAnswers[x] = new Label(correctAnswer+" (typo)");
+                    userAnswers[x] = new CustomLabel(userInput+" (typo)");
                     userAnswers[x].setTextFill(Color.RED);
                     correctCounter+=0.5;
                 }
                 else{
-                    userAnswers[x] = new Label(userInput);
+                    userAnswers[x] = new CustomLabel(userInput);
                     userAnswers[x].setTextFill(Color.RED);
                 }
             }
             else{
-                userAnswers[x] = new Label(userInput);
+                userAnswers[x] = new CustomLabel(userInput);
                 userAnswers[x].setTextFill(Color.RED);
             }
             x++;
@@ -146,25 +149,86 @@ public class Exercise{
         percent = percent/100;
 
         Probability.saveProbabilityArray(probabilityArray);
-        Label[][] resultsLabels = new Label[2][correctAnswers.length];
+        CustomLabel[][] resultsLabels = new CustomLabel[2][correctAnswers.length];
         resultsLabels[0] = userAnswers;
         resultsLabels[1] = correctAnswers;
         return resultsLabels;
     }
 
-    public static String printClue(String correctAnswer,String wordInput, Scanner input2){
-        numberOfClues++;
+    public static CustomLabel[] correctAnswers(String inputLanguageString, LinkedHashMap<String, String> words) {
+        FileReader fileReader = new FileReader();
+        ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
+        int numberOfWords = words.size();
 
-        int randomPlace = random.nextInt(correctAnswer.length()-1);
-        System.out.print(correctAnswer.charAt(0)+" ");
-        for(int c=1;c<correctAnswer.length()-1;c++){
-            if(c==randomPlace){
-                System.out.print(correctAnswer.charAt(randomPlace)+" ");
-            }
-            System.out.print("_ ");
+        int counter =0;
+
+        CustomLabel[] correctAnswers = new CustomLabel[words.size()];
+
+        int x =0;
+
+        for (String key : words.keySet() ) {
+            int globalIndex = randomIndices.get(x);
+            String correctAnswer = inputLanguage.get(globalIndex);
+            correctAnswers[x] = new CustomLabel(correctAnswer);
+            x++;
         }
-        wordInput=input2.next();
-        return wordInput;
+        return correctAnswers;
+    }
+
+
+    public static String printClue(int index, String correctAnswer, String inputLanguageString){
+
+        System.out.println("print Clue");
+        CustomLabel[] correctAnswers = Exercise.correctAnswers(inputLanguageString, words);
+        String correctAnswerClue = correctAnswers[index].getText();
+        //daj kazdemu buttonowi clue numer, ktory bedzie rownoczesnie indeksem z words
+        numberOfClues++;
+        // musze jakos pobierać prawidłową odpowiedź, możnaby z results to robic, po prostu wczesniej je wwywol
+
+        String clue ="\t";
+        clue +=correctAnswerClue.charAt(0)+" ";
+        int numberOfShownLetter = correctAnswerClue.length()/3;
+        System.out.println("number of shown letter" + numberOfShownLetter);
+        int[] randomPlaces = new int[numberOfShownLetter];
+        for(int d = 0;d<randomPlaces.length;d++){
+            int randomPlace = random.nextInt(correctAnswer.length()-1);
+            if(!contains(randomPlace, randomPlaces)){
+                randomPlaces[d] = randomPlace;
+            }
+            else{
+                d--;
+            }
+
+        }
+
+        for(int place:randomPlaces){
+            System.out.println(place);
+        }
+
+        for(int c=1;c<correctAnswerClue.length();c++){
+            Character space = correctAnswerClue.charAt(c);
+            if(space ==(char) 32){
+                clue += " ";
+            }
+            else if(contains(c,randomPlaces)){
+                clue += correctAnswerClue.charAt(c)+" ";
+            }
+            else{
+                clue += "_ ";
+            }
+        }
+
+        return clue;
+    }
+
+    public static boolean contains(int randomPlace, int[] randomPlaces){
+        for(int i=0;i<randomPlaces.length;i++){
+            if(randomPlaces[i]==randomPlace){
+                return true;
+            }
+
+        }
+        return false;
     }
 
     public static int getNumberOfClues(){

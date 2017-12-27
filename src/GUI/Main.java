@@ -19,9 +19,9 @@ public class Main extends Application{
         MenuView menu = new MenuView();
         Scene scene = new Scene(menu);
 
-        primaryStage.setTitle("Petris");
+        primaryStage.setTitle("Learn English");
         primaryStage.setScene(scene);
-        primaryStage.setWidth(500);
+        primaryStage.setWidth(600);
         primaryStage.setHeight(500);
         primaryStage.setResizable(true);
 
