@@ -8,8 +8,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import GUI.CustomLabel;
-import GUI.Main;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
@@ -21,6 +19,8 @@ public class Exercise{
     private static double correctCounter=0;
     private static double percent;
     private static ArrayList<String> correctAnswersList = new ArrayList<>();
+    private static ArrayList<Integer> indicesWhereCluesUsed = new ArrayList<>();
+    private static int numberOfAllClues;
 
 
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
@@ -82,7 +82,7 @@ public class Exercise{
 
         int x =0;
         double[] probabilityArray = Probability.readProbabilityArray(inputLanguage.size());
-
+        numberOfAllClues = indicesWhereCluesUsed.size();
         for (String key : words.keySet() ) {
             String userInput = words.get(key);
             int globalIndex = randomIndices.get(x);
@@ -92,6 +92,11 @@ public class Exercise{
             correctAnswers[x] = new CustomLabel(correctAnswer);
             correctAnswers[x].setTextFill(Color.GREEN);
             if(userInput.equals(correctAnswer)){
+                if(x==indicesWhereCluesUsed.get(0)){
+                    System.out.println("x "+x);
+                    numberOfClues++;
+                    indicesWhereCluesUsed.remove(0);
+                }
                 correctCounter++;
                 if(probabilityArray[globalIndex]==0.0){
                     probabilityArray[globalIndex]=1.0;
@@ -106,6 +111,7 @@ public class Exercise{
 
             }
             else if(correctAnswer.length()==userInput.length()){
+
                 int countTypo =0;
                 for(int y=0;y<correctAnswer.length();y++){
                     if(!(correctAnswer.charAt(y)==userInput.charAt(y))){
@@ -113,6 +119,11 @@ public class Exercise{
                     }
                 }
                 if(countTypo<=2){
+                    if(x==indicesWhereCluesUsed.get(0)){
+                        System.out.println("x "+x);
+                        numberOfClues++;
+                        indicesWhereCluesUsed.remove(0);
+                    }
                     userAnswers[x] = new CustomLabel(userInput+" (typo)");
                     userAnswers[x].setTextFill(Color.RED);
                     correctCounter+=0.5;
@@ -168,10 +179,9 @@ public class Exercise{
 
 
     public static String printClue(int index, String correctAnswer, String inputLanguageString){
-
+        indicesWhereCluesUsed.add(index);
         CustomLabel[] correctAnswers = Exercise.correctAnswers(inputLanguageString, words);
         String correctAnswerClue = correctAnswers[index].getText();
-        numberOfClues++;
         String clue ="\t";
         clue +=correctAnswerClue.charAt(0)+" ";
         int numberOfShownLetter = correctAnswerClue.length()/3;
@@ -216,6 +226,10 @@ public class Exercise{
 
     public static int getNumberOfClues(){
         return numberOfClues;
+    }
+
+    public static int getNumberOfAllClues(){
+        return  numberOfAllClues;
     }
 
     public static double getCorrectCounter(){

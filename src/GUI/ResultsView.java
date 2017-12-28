@@ -54,7 +54,8 @@ public class ResultsView extends GridPane{
 
 
         CustomLabel cluesLabel = new CustomLabel();
-        cluesLabel.setText("You used "+Exercise.getNumberOfClues()+" clues.");
+        cluesLabel.setText("You used "+Exercise.getNumberOfAllClues()+" clues, "
+                            +Exercise.getNumberOfClues()+" of them helped you.");
         add(cluesLabel,1,words.size()+2);
 
         CustomLabel summaryLabel = new CustomLabel();
