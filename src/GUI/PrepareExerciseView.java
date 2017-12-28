@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class PrepareExerciseView extends GridPane{
-
+    private static String fromValue, toValue;
     public PrepareExerciseView() throws FileNotFoundException{
         FileReader fileReader = new FileReader();
 
@@ -42,16 +42,29 @@ public class PrepareExerciseView extends GridPane{
         toComboBox.setPromptText("Polish");
         add(toComboBox,1,1);
 
+        setValues(fromComboBox,toComboBox);
+
+        Button swap = new Button("Swap languages");
+        swap.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                swapValues(fromComboBox, toComboBox);
+
+
+            }
+        });
+        add(swap, 1, 2);
+
         CustomLabel numberOfWords = new CustomLabel("Number of words in exercise (0 - 10)");
-        add(numberOfWords,0,2);
+        add(numberOfWords,0,3);
 
         TextField inputNumber = new TextField("6");
         inputNumber.setMaxWidth(100);
-        add(inputNumber,1,2);
+        add(inputNumber,1,3);
 
         CustomLabel errorLabel = new CustomLabel();
         errorLabel.setTextFill(Color.RED);
-        add(errorLabel,0,3);
+        add(errorLabel,0,4);
 
         Button submit = new Button("Submit");
         submit.setMinSize(150, 50);
@@ -61,30 +74,42 @@ public class PrepareExerciseView extends GridPane{
                 checkAndRun(inputNumber, errorLabel, fromComboBox, toComboBox);
             }
         });
-        add(submit, 1, 3);
+        add(submit, 1, 4);
 
         setAlignment(Pos.CENTER);
         setVgap(20);
         setHgap(5);
     }
 
+    public static void swapValues(ComboBox fromComboBox, ComboBox toComboBox){
+        toComboBox.setPromptText(fromValue);
+        fromComboBox.setPromptText(toValue);
+        String temp = fromValue;
+        fromValue = toValue;
+        toValue = temp;
+    }
+
+    public static void setValues(ComboBox fromComboBox, ComboBox toComboBox){
+        if(fromComboBox.getValue()==null){
+            fromValue=fromComboBox.getPromptText();
+        }
+        else{
+            fromValue=(String) fromComboBox.getValue();
+        }
+        if(toComboBox.getValue()==null){
+            toValue = toComboBox.getPromptText();
+        }
+        else{
+            toValue = (String) toComboBox.getValue();
+        }
+    }
+
     public static void checkAndRun(TextField inputNumber, CustomLabel errorLabel, ComboBox fromComboBox, ComboBox toComboBox){
-        System.out.println(inputNumber.getText());
+
         if(!inputNumber.getText().equals("")){
             int n= Integer.parseInt(inputNumber.getText());
-            String fromValue, toValue;
-            if(fromComboBox.getValue()==null){
-                fromValue=fromComboBox.getPromptText();
-            }
-            else{
-                fromValue=(String) fromComboBox.getValue();
-            }
-            if(toComboBox.getValue()==null){
-                toValue = toComboBox.getPromptText();
-            }
-            else{
-                toValue = (String) toComboBox.getValue();
-            }
+
+
             if(n>10||n<1){
                 errorLabel.setText("You must input number between 1 and 10.");
             }

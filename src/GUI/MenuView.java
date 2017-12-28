@@ -28,7 +28,7 @@ public class MenuView extends GridPane{
                      Main.getStage().setScene(new Scene(prepareView));
                  }
                  catch(IOException e){
-                     System.out.println("You fucked up");
+                     System.out.println("File not found.");
                  }
              }
          });

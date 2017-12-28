@@ -56,20 +56,6 @@ public class Exercise{
                 String wordOutput = translatedLanguage.get(randomIndex);
                 words.put(wordOutput,"");
                 randomIndices.add(randomIndex);
-
-//                String wordInput = input2.next();
-//                String correctAnswer = inputLanguage.get(randomIndices.get(i));
-//                if(wordInput.equals("clue")){
-//                    wordInput = printClue(correctAnswer, wordInput,input2);
-//                }
-//                int stringSize = correctAnswer.split(" ").length;
-//                for(int j=0;j<stringSize-1;j++){
-//                    String newInput=input2.next();
-//                    wordInput = wordInput+" "+newInput;
-//                }
-//
-//                words.put(wordOutput, wordInput);
-//                System.out.println("");
             }
         }
 
@@ -102,10 +88,8 @@ public class Exercise{
             int globalIndex = randomIndices.get(x);
 
             String correctAnswer = inputLanguage.get(globalIndex);
-            System.out.println(correctAnswer);
             correctAnswersList.add(correctAnswer);
             correctAnswers[x] = new CustomLabel(correctAnswer);
-            System.out.println("Corect"+correctAnswer+" "+globalIndex);
             correctAnswers[x].setTextFill(Color.GREEN);
             if(userInput.equals(correctAnswer)){
                 correctCounter++;
@@ -118,6 +102,7 @@ public class Exercise{
 
 
                 }
+                userAnswers[x]= new CustomLabel("Your answers was correct!");
 
             }
             else if(correctAnswer.length()==userInput.length()){
@@ -138,8 +123,14 @@ public class Exercise{
                 }
             }
             else{
-                userAnswers[x] = new CustomLabel(userInput);
-                userAnswers[x].setTextFill(Color.RED);
+                if(userInput.equals("")){
+                    userAnswers[x] = new CustomLabel("No answer");
+                }
+                else{
+                    userAnswers[x] = new CustomLabel(userInput);
+                    userAnswers[x].setTextFill(Color.RED);
+                }
+
             }
             x++;
         }
@@ -178,17 +169,12 @@ public class Exercise{
 
     public static String printClue(int index, String correctAnswer, String inputLanguageString){
 
-        System.out.println("print Clue");
         CustomLabel[] correctAnswers = Exercise.correctAnswers(inputLanguageString, words);
         String correctAnswerClue = correctAnswers[index].getText();
-        //daj kazdemu buttonowi clue numer, ktory bedzie rownoczesnie indeksem z words
         numberOfClues++;
-        // musze jakos pobierać prawidłową odpowiedź, możnaby z results to robic, po prostu wczesniej je wwywol
-
         String clue ="\t";
         clue +=correctAnswerClue.charAt(0)+" ";
         int numberOfShownLetter = correctAnswerClue.length()/3;
-        System.out.println("number of shown letter" + numberOfShownLetter);
         int[] randomPlaces = new int[numberOfShownLetter];
         for(int d = 0;d<randomPlaces.length;d++){
             int randomPlace = random.nextInt(correctAnswer.length()-1);
@@ -201,9 +187,6 @@ public class Exercise{
 
         }
 
-        for(int place:randomPlaces){
-            System.out.println(place);
-        }
 
         for(int c=1;c<correctAnswerClue.length();c++){
             Character space = correctAnswerClue.charAt(c);

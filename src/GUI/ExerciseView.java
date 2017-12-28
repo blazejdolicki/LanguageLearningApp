@@ -72,7 +72,6 @@ public class ExerciseView extends GridPane{
             clue.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    System.out.println(outputText);
                     clueLabel.setText(Exercise.printClue(clueLabel.getIndex()-1, outputText, inputLanguage));
                     int counterParameter = clue.getCounter();
                     getChildren().remove(clue);

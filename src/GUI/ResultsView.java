@@ -21,10 +21,10 @@ import java.util.LinkedHashMap;
 
 public class ResultsView extends GridPane{
     public ResultsView(String translatedLanguage, String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
-        Main.getStage().setWidth(600);
 
 
-        CustomLabel mistakes = new CustomLabel("Incorrect answers");
+
+        CustomLabel mistakes = new CustomLabel("Your answers");
         mistakes.setFont(Font.font("Verdana", FontWeight.BOLD, mistakes.getFontSize()));
         mistakes.setTextFill(Color.RED);
         add(mistakes,1,0);
@@ -47,7 +47,6 @@ public class ResultsView extends GridPane{
         CustomLabel[][] resultsLabels = Exercise.results(inputLanguageString, words, textFields);
         for(int i = 0;i<resultsLabels.length;i++){
             for(int j = 0; j<resultsLabels[0].length;j++){
-                System.out.println(i+1+" + "+(j+1));
                 add(resultsLabels[i][j], i+1,j+1);
 
             }
@@ -57,10 +56,18 @@ public class ResultsView extends GridPane{
         CustomLabel cluesLabel = new CustomLabel();
         cluesLabel.setText("You used "+Exercise.getNumberOfClues()+" clues.");
         add(cluesLabel,1,words.size()+2);
-        System.out.println(words.size());
 
         CustomLabel summaryLabel = new CustomLabel();
-        summaryLabel.setText("Correct answers: "+Exercise.getCorrectCounter()+"/"+words.size()+" - "+Exercise.getPercent()+"%");
+
+        if(Exercise.getCorrectCounter()%1==0){
+            int correctCounter = (int) Exercise.getCorrectCounter();
+            summaryLabel.setText("Correct answers: "+ correctCounter +"/"+words.size()+" - "+Exercise.getPercent()+"%");
+        }
+        else{
+            double correctCounter = Exercise.getCorrectCounter();
+            summaryLabel.setText("Correct answers: "+ correctCounter +"/"+words.size()+" - "+Exercise.getPercent()+"%");
+        }
+
         add(summaryLabel,1,words.size()+3);
 
         Button submit = new Button("Submit");
