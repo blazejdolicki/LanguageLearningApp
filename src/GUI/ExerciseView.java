@@ -25,16 +25,16 @@ import java.util.Scanner;
 
 public class ExerciseView extends GridPane{
     private int numberOfWords;
-    private String translatedLanguage;
-    private String inputLanguage;
+    private String fromLanguage;
+    private String toLanguage;
     LinkedHashMap<String, String> words;
     private int i;
 
 
-    public ExerciseView(int numberOfWords, String translatedLanguage, String inputLanguage){
+    public ExerciseView(int numberOfWords, String fromLanguage, String toLanguage){
         this.numberOfWords =  numberOfWords;
-        this.translatedLanguage = translatedLanguage;
-        this.inputLanguage = inputLanguage;
+        this.fromLanguage = fromLanguage;
+        this.toLanguage = toLanguage;
 
 
         if(numberOfWords>5){
@@ -44,12 +44,12 @@ public class ExerciseView extends GridPane{
 
         Main.getStage().setWidth(800);
 
-        CustomLabel description = new CustomLabel("Translate to "+ inputLanguage);
+        CustomLabel description = new CustomLabel("Translate to "+ toLanguage);
         description.setFont(Font.font("Verdana", FontWeight.BOLD, description.getFontSize()));
         add(description,0,0);
 
         try{
-            words = Exercise.printExercise(numberOfWords, translatedLanguage, inputLanguage);
+            words = Exercise.printExercise(numberOfWords, fromLanguage, toLanguage);
         }
         catch(FileNotFoundException e){
             System.out.println("File not found");
@@ -72,7 +72,7 @@ public class ExerciseView extends GridPane{
             clue.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    clueLabel.setText(Exercise.printClue(clueLabel.getIndex()-1, outputText, inputLanguage));
+                    clueLabel.setText(Exercise.printClue(clueLabel.getIndex()-1, outputText, toLanguage));
                     int counterParameter = clue.getCounter();
                     getChildren().remove(clue);
                     add(clueLabel, 3, counterParameter);
@@ -91,7 +91,7 @@ public class ExerciseView extends GridPane{
         submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
-                ResultsView resultsView = new ResultsView(translatedLanguage, inputLanguage, words, textFields);
+                ResultsView resultsView = new ResultsView(fromLanguage, toLanguage, words, textFields);
                 Main.getStage().setScene(new Scene(resultsView));
             }
         });

@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 
 public class ResultsView extends GridPane{
-    public ResultsView(String translatedLanguage, String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
+    public ResultsView(String fromLanguage, String toLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
 
 
         CustomLabel mistakes = new CustomLabel("Your answers");
@@ -42,8 +42,7 @@ public class ResultsView extends GridPane{
 
         }
 
-        FileReader fileReader = new FileReader();
-        CustomLabel[][] resultsLabels = Exercise.results(inputLanguageString, words, textFields);
+        CustomLabel[][] resultsLabels = Exercise.results(toLanguageString, words, textFields);
         for(int i = 0;i<resultsLabels.length;i++){
             for(int j = 0; j<resultsLabels[0].length;j++){
                 add(resultsLabels[i][j], i+1,j+1);
@@ -81,7 +80,7 @@ public class ResultsView extends GridPane{
             public void handle(ActionEvent event){
                 Exercise.setNumberOfAllClues(0);
                 Exercise.setNumberOfClues(0);
-                ExerciseView newExerciseView = new ExerciseView(words.size(), translatedLanguage, inputLanguageString);
+                ExerciseView newExerciseView = new ExerciseView(words.size(), fromLanguage, toLanguageString);
                 Exercise.setCorrectCounter(0);
                 Main.getStage().setScene(new Scene(newExerciseView));
             }

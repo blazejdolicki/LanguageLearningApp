@@ -118,22 +118,22 @@ public class PrepareExerciseView extends GridPane{
             }
             //tutaj musisz pozmieniac troche bo nie moze byc null.equals(costam)
             else{
-                String inputLanguage;
-                String translatedLanguage;
+                String toLanguage;
+                String fromLanguage;
                 if(toComboBox.getValue()==null){
-                    inputLanguage = toComboBox.getPromptText();
+                    toLanguage = toComboBox.getPromptText();
                 }
                 else{
-                    inputLanguage = (String) toComboBox.getValue();
+                    toLanguage = (String) toComboBox.getValue();
                 }
                 if(fromComboBox.getValue()==null){
-                    translatedLanguage = fromComboBox.getPromptText();
+                    fromLanguage = fromComboBox.getPromptText();
                 }
                 else{
-                    translatedLanguage = (String) fromComboBox.getValue();
+                    fromLanguage = (String) fromComboBox.getValue();
                 }
 
-                ExerciseView exerciseView = new ExerciseView(n, translatedLanguage, inputLanguage);
+                ExerciseView exerciseView = new ExerciseView(n, fromLanguage, toLanguage);
                 Main.getStage().setScene(new Scene(exerciseView));
             }
         }

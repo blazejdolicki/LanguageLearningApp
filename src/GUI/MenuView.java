@@ -33,9 +33,22 @@ public class MenuView extends GridPane{
              }
          });
          add(exercise, 0, 0);
+        setHalignment(exercise, HPos.CENTER);
+
+        Button translateWord = new Button("Translate word");
+        translateWord.setMinSize(150,50);
+        translateWord.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                PrepareTranslatorView translatorView = new PrepareTranslatorView();
+                Main.getStage().setScene(new Scene(translatorView));
+
+            }
+        });
+        add(translateWord, 0,1);
+        setHalignment(translateWord, HPos.CENTER);
 
         setAlignment(Pos.CENTER);
-        setHalignment(exercise, HPos.CENTER);
         setVgap(10);
 
     }

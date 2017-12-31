@@ -23,15 +23,15 @@ public class Exercise{
     private static int numberOfAllClues=0;
 
 
-    public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
+    public static LinkedHashMap<String,String> printExercise(int numberOfWords, String fromLanguageString, String toLanguageString) throws FileNotFoundException {
         randomIndices = new ArrayList<>();
         words = new LinkedHashMap<>();
         FileReader fileReader = new FileReader();
-        ArrayList<String> translatedLanguage = fileReader.getLanguagesList().get(translatedLanguageString);
-        ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
+        ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
+        ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
 
         File file = new File("Probability.txt");
-        double[] probabilityArray = new double[translatedLanguage.size()];
+        double[] probabilityArray = new double[fromLanguage.size()];
         if(file.exists()){
             probabilityArray = Probability.readProbabilityArray(probabilityArray.length);
         }
@@ -41,7 +41,7 @@ public class Exercise{
 
         for (int i = 0; i<numberOfWords; i++){
             double p = Math.random();
-            int randomIndex = random.nextInt(translatedLanguage.size()-1);
+            int randomIndex = random.nextInt(fromLanguage.size()-1);
             double probabilityCoefficient=0.0;
             if(probabilityArray[randomIndex]!=0.0){
                 probabilityCoefficient = probabilityArray[randomIndex];
@@ -53,7 +53,7 @@ public class Exercise{
                 i--;
             }
             else{
-                String wordOutput = translatedLanguage.get(randomIndex);
+                String wordOutput = fromLanguage.get(randomIndex);
                 words.put(wordOutput,"");
                 randomIndices.add(randomIndex);
             }
@@ -63,9 +63,9 @@ public class Exercise{
         return words;
     }
 
-    public static CustomLabel[][] results(String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) {
+    public static CustomLabel[][] results(String toLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) {
         FileReader fileReader = new FileReader();
-        ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
+        ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
         int numberOfWords = words.size();
 
         int counter =0;
@@ -81,13 +81,13 @@ public class Exercise{
         }
 
         int x =0;
-        double[] probabilityArray = Probability.readProbabilityArray(inputLanguage.size());
+        double[] probabilityArray = Probability.readProbabilityArray(toLanguage.size());
         numberOfAllClues = indicesWhereCluesUsed.size();
         for (String key : words.keySet() ) {
             String userInput = words.get(key);
             int globalIndex = randomIndices.get(x);
 
-            String correctAnswer = inputLanguage.get(globalIndex);
+            String correctAnswer = toLanguage.get(globalIndex);
             correctAnswersList.add(correctAnswer);
             correctAnswers[x] = new CustomLabel(correctAnswer);
             correctAnswers[x].setTextFill(Color.GREEN);
@@ -157,9 +157,9 @@ public class Exercise{
         return resultsLabels;
     }
 
-    public static CustomLabel[] correctAnswers(String inputLanguageString, LinkedHashMap<String, String> words) {
+    public static CustomLabel[] correctAnswers(String toLanguageString, LinkedHashMap<String, String> words) {
         FileReader fileReader = new FileReader();
-        ArrayList<String> inputLanguage = fileReader.getLanguagesList().get(inputLanguageString);
+        ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
         int numberOfWords = words.size();
 
         int counter =0;
@@ -170,7 +170,7 @@ public class Exercise{
 
         for (String key : words.keySet() ) {
             int globalIndex = randomIndices.get(x);
-            String correctAnswer = inputLanguage.get(globalIndex);
+            String correctAnswer = toLanguage.get(globalIndex);
             correctAnswers[x] = new CustomLabel(correctAnswer);
             x++;
         }
@@ -178,9 +178,9 @@ public class Exercise{
     }
 
 
-    public static String printClue(int index, String correctAnswer, String inputLanguageString){
+    public static String printClue(int index, String correctAnswer, String toLanguageString){
         indicesWhereCluesUsed.add(index);
-        CustomLabel[] correctAnswers = Exercise.correctAnswers(inputLanguageString, words);
+        CustomLabel[] correctAnswers = Exercise.correctAnswers(toLanguageString, words);
         String correctAnswerClue = correctAnswers[index].getText();
         String clue ="\t";
         clue +=correctAnswerClue.charAt(0)+" ";
