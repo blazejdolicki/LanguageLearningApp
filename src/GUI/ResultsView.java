@@ -23,7 +23,6 @@ public class ResultsView extends GridPane{
     public ResultsView(String translatedLanguage, String inputLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
 
 
-
         CustomLabel mistakes = new CustomLabel("Your answers");
         mistakes.setFont(Font.font("Verdana", FontWeight.BOLD, mistakes.getFontSize()));
         mistakes.setTextFill(Color.RED);
@@ -54,8 +53,12 @@ public class ResultsView extends GridPane{
 
 
         CustomLabel cluesLabel = new CustomLabel();
+        // coś nie działa z numberOfClues - nie pokazuje ze clue pomogło, mimo, że pomogło
         cluesLabel.setText("You used "+Exercise.getNumberOfAllClues()+" clues, "
                             +Exercise.getNumberOfClues()+" of them helped you.");
+
+        Exercise.setNumberOfAllClues(0);
+        Exercise.setNumberOfClues(0);
         add(cluesLabel,1,words.size()+2);
 
         CustomLabel summaryLabel = new CustomLabel();
@@ -76,7 +79,10 @@ public class ResultsView extends GridPane{
         submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
+                Exercise.setNumberOfAllClues(0);
+                Exercise.setNumberOfClues(0);
                 ExerciseView newExerciseView = new ExerciseView(words.size(), translatedLanguage, inputLanguageString);
+                Exercise.setCorrectCounter(0);
                 Main.getStage().setScene(new Scene(newExerciseView));
             }
         });

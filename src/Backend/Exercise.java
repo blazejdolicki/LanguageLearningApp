@@ -20,7 +20,7 @@ public class Exercise{
     private static double percent;
     private static ArrayList<String> correctAnswersList = new ArrayList<>();
     private static ArrayList<Integer> indicesWhereCluesUsed = new ArrayList<>();
-    private static int numberOfAllClues;
+    private static int numberOfAllClues=0;
 
 
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String translatedLanguageString, String inputLanguageString) throws FileNotFoundException {
@@ -92,8 +92,8 @@ public class Exercise{
             correctAnswers[x] = new CustomLabel(correctAnswer);
             correctAnswers[x].setTextFill(Color.GREEN);
             if(userInput.equals(correctAnswer)){
-                if(x==indicesWhereCluesUsed.get(0)){
-                    System.out.println("x "+x);
+
+                if(indicesWhereCluesUsed.size()!=0 && x==indicesWhereCluesUsed.get(0)){
                     numberOfClues++;
                     indicesWhereCluesUsed.remove(0);
                 }
@@ -119,8 +119,7 @@ public class Exercise{
                     }
                 }
                 if(countTypo<=2){
-                    if(x==indicesWhereCluesUsed.get(0)){
-                        System.out.println("x "+x);
+                    if(indicesWhereCluesUsed.size()!=0 && x==indicesWhereCluesUsed.get(0)){
                         numberOfClues++;
                         indicesWhereCluesUsed.remove(0);
                     }
@@ -145,6 +144,7 @@ public class Exercise{
             }
             x++;
         }
+        indicesWhereCluesUsed = new ArrayList<>();
         correctCounter=correctCounter-numberOfClues*0.5;
         percent = (correctCounter/numberOfWords)*100;
         percent = Math.round(percent * 100);
@@ -232,9 +232,20 @@ public class Exercise{
         return  numberOfAllClues;
     }
 
+    public static void setNumberOfClues(int newValue){
+        numberOfClues = newValue;
+    }
+
+    public static void setNumberOfAllClues(int newValue){
+        numberOfAllClues = newValue;
+    }
+
     public static double getCorrectCounter(){
         return correctCounter;
+    }
 
+    public static void setCorrectCounter(double newValue){
+        correctCounter=newValue;
     }
 
     public static double getPercent(){
