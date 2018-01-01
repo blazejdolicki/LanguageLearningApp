@@ -10,19 +10,20 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 
 public class Main extends Application{
-    private static Stage primaryStage;
+    private static Stage primaryStage, secondaryStage;
 
     @Override
     public void start(Stage ps) throws FileNotFoundException{
         primaryStage = ps;
 
+        primaryStage.setWidth(600);
+        primaryStage.setHeight(500);
         MenuView menu = new MenuView();
         Scene scene = new Scene(menu);
 
         primaryStage.setTitle("Learn English");
         primaryStage.setScene(scene);
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(500);
+
         primaryStage.setResizable(true);
 
         //put stage in the middle
@@ -31,6 +32,7 @@ public class Main extends Application{
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
 
         primaryStage.show();
+
     }
 
     public static Stage getStage(){

@@ -8,7 +8,10 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,8 +21,14 @@ import java.util.Scanner;
 public class MenuView extends GridPane{
     public MenuView(){
 
+        Label mainMenu = new Label("Main menu");
+        mainMenu.setFont(Font.font("Verdana", FontWeight.NORMAL, 38));
+        add(mainMenu,0,0);
+        setHalignment(mainMenu, HPos.CENTER);
+
         Button exercise = new Button("Exercise");
-        exercise.setMinSize(150, 50);
+        exercise.setFont(Font.font("Verdana",FontWeight.NORMAL,28));
+        exercise.setMinSize(350, 100);
         exercise.setOnAction(new EventHandler<ActionEvent>() {
              @Override
              public void handle(ActionEvent event){
@@ -32,11 +41,12 @@ public class MenuView extends GridPane{
                  }
              }
          });
-         add(exercise, 0, 0);
+         add(exercise, 0, 1);
         setHalignment(exercise, HPos.CENTER);
 
         Button translateWord = new Button("Translate word");
-        translateWord.setMinSize(150,50);
+        translateWord.setFont(Font.font("Verdana",FontWeight.NORMAL,28));
+        translateWord.setMinSize(350,100);
         translateWord.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -45,7 +55,7 @@ public class MenuView extends GridPane{
 
             }
         });
-        add(translateWord, 0,1);
+        add(translateWord, 0,2);
         setHalignment(translateWord, HPos.CENTER);
 
         setAlignment(Pos.CENTER);

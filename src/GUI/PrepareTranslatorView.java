@@ -10,12 +10,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class PrepareTranslatorView extends GridPane{
-        private static String fromValue, toValue;
+        private static String fromValue, toValue, inputWord;
 
         public PrepareTranslatorView() {
             FileReader fileReader = new FileReader();
@@ -55,15 +57,21 @@ public class PrepareTranslatorView extends GridPane{
             add(inputLabel,0,3);
 
             TextField inputText = new TextField();
-            inputText.setMaxWidth(100);
+            inputText.setMinWidth(100);
             add(inputText,1,3);
 
             CustomLabel errorLabel = new CustomLabel();
             errorLabel.setTextFill(Color.RED);
             add(errorLabel,0,4);
 
-            CustomLabel resultLabel = new CustomLabel("Result: ");
-            add(resultLabel,0,5);
+
+            CustomLabel resultTextLabel = new CustomLabel();
+            add(resultTextLabel,0,5);
+            resultTextLabel.setText("Result: ");
+
+            CustomLabel resultLabel = new CustomLabel();
+            add(resultLabel,0,6);
+            resultLabel.setFont(Font.font("Verdana", FontWeight.NORMAL, 18));
 
             Button submit = new Button("Submit");
             submit.setMinSize(150, 50);
@@ -104,10 +112,13 @@ public class PrepareTranslatorView extends GridPane{
         }
 
     public static void checkAndRun(TextField inputText, CustomLabel errorLabel, ComboBox fromComboBox, ComboBox toComboBox, CustomLabel resultLabel){
-        setValues(fromComboBox,toComboBox);
+        errorLabel.setText("");
         if(!inputText.getText().equals("")){
             if(toValue.equals(fromValue)){
                 errorLabel.setText("Languages can't be the same.");
+            }
+            else if(inputText.getText().equals(inputWord)){
+
             }
             else{
                 String toLanguageString;
@@ -128,11 +139,11 @@ public class PrepareTranslatorView extends GridPane{
                 FileReader fileReader = new FileReader();
                 ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
                 ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
-                String inputWord = inputText.getText();
+                inputWord = inputText.getText();
                 for(int x=0;x<fromLanguage.size();x++){
                     if(inputWord.equals(fromLanguage.get(x))){
                         String inputAnswer = toLanguage.get(x);
-                        resultLabel.setText(resultLabel.getText()+" "+inputAnswer);
+                        resultLabel.setText(inputAnswer);
                     }
                 }
                 
