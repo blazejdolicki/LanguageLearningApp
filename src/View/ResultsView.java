@@ -15,6 +15,12 @@ import javafx.scene.text.FontWeight;
 
 import java.util.LinkedHashMap;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class ResultsView extends GridPane{
     public ResultsView(String fromLanguage, String toLanguageString, LinkedHashMap<String, String> words, TextField[] textFields){
 

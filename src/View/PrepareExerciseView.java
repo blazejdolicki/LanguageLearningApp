@@ -13,6 +13,12 @@ import javafx.scene.paint.Color;
 
 import java.io.FileNotFoundException;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class PrepareExerciseView extends GridPane{
     private static String fromValue, toValue;
     public PrepareExerciseView() throws FileNotFoundException{
@@ -129,7 +135,6 @@ public class PrepareExerciseView extends GridPane{
                 else{
                     fromLanguage = (String) fromComboBox.getValue();
                 }
-                System.out.println("from "+fromLanguage+" to "+toLanguage);
                 ExerciseView exerciseView = new ExerciseView(n, fromLanguage, toLanguage);
                 Main.getStage().setScene(new Scene(exerciseView));
             }

@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
 public class FileReader {
     private LinkedHashMap<String, ArrayList<String>> languagesList;
     public FileReader() {
@@ -26,7 +30,6 @@ public class FileReader {
 
                 String english = parts[parts.length-2];
                 String polish = parts[parts.length-1];
-                System.out.println(polish);
                 secondLanguageList.add(polish);
                 firstLanguageList.add(english);
                 x++;

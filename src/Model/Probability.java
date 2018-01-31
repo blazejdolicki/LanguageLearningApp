@@ -6,6 +6,12 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class Probability {
     // test after merge
     public static double[] readProbabilityArray(int dictionarySize) {

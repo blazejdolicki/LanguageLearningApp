@@ -15,6 +15,12 @@ import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class PrepareTranslatorView extends GridPane{
         private static String fromValue, toValue, inputWord;
 

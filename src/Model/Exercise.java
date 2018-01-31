@@ -11,6 +11,11 @@ import View.CustomLabel;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
 public class Exercise{
     private static int numberOfClues=0;
     private static Random random = new Random();
@@ -26,17 +31,7 @@ public class Exercise{
         randomIndices = new ArrayList<>();
         words = new LinkedHashMap<>();
         FileReader fileReader = new FileReader();
-        System.out.println("a"+fromLanguageString+"a");
-        for(String key:fileReader.getLanguagesList().keySet()){
-            System.out.println("a"+key+"b");
-            if(key.equals(fromLanguageString)){
-                System.out.println("Equals");
-            }
-            else{
-                System.out.println("Doesnt equal");
-            }
-            System.out.println(fileReader.getLanguagesList().get(key).size());
-        }
+
 
         ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
         ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);

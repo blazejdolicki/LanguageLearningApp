@@ -4,6 +4,12 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class CustomLabel extends Label {
     private final int fontSize = 15;
     private int index;

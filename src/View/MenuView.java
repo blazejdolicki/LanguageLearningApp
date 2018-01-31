@@ -13,6 +13,12 @@ import javafx.scene.text.FontWeight;
 
 import java.io.IOException;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class MenuView extends GridPane{
     public MenuView(){
 

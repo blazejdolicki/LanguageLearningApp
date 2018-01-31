@@ -22,6 +22,11 @@ public class ExerciseView extends GridPane{
     LinkedHashMap<String, String> words;
     private int i;
 
+    /**
+     *
+     * @author Błażej
+     * @since 31/01/2018
+     */
 
     public ExerciseView(int numberOfWords, String fromLanguage, String toLanguage){
         this.numberOfWords =  numberOfWords;

@@ -8,6 +8,12 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
+/**
+ *
+ * @author Błażej
+ * @since 31/01/2018
+ */
+
 public class Main extends Application{
     private static Stage primaryStage, secondaryStage;
 
