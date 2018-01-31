@@ -1,27 +1,19 @@
-package GUI;
+package View;
 
-import Backend.Exercise;
-import Backend.FileReader;
+import Model.Exercise;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import sun.text.resources.iw.FormatData_iw_IL;
 
-import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Scanner;
 
 public class ExerciseView extends GridPane{
     private int numberOfWords;

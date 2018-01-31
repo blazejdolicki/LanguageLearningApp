@@ -1,6 +1,6 @@
-package GUI;
+package View;
 
-import Backend.FileReader;
+import Model.FileReader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class PrepareTranslatorView extends GridPane{
@@ -82,6 +81,19 @@ public class PrepareTranslatorView extends GridPane{
                 }
             });
             add(submit, 1, 4);
+
+            Button backToMenu = new Button("Back to menu");
+            backToMenu.setMinSize(150, 50);
+            EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event){
+                    MenuView menu = new MenuView();
+                    Main.getStage().setScene(new Scene(menu));
+                }
+            };
+            backToMenu.setOnAction(handler);
+
+            add(backToMenu, 2, 4);
 
             setAlignment(Pos.CENTER);
             setVgap(20);

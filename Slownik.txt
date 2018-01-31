@@ -1,59 +1,77 @@
-English	Polish	persistent	trwaÅ‚y
-English	Polish	residual	pozostaÅ‚y
+English	Polish	remorse	wyrzuty sumienia
+English	Polish	endorsement	poparcie
+English	Polish	distraught	zrozpaczony
+English	Polish	contemporary	wspó³czesny
+English	Polish	converge	skupiaæ
+English	Polish	cumbersome	niewygodny
+English	Polish	inference	wnioskowanie
+English	Polish	compositionality	kompozycyjnoœæ
+English	Polish	paucity	niedostatek
+English	Polish	causal	przyczynowy
+English	Polish	cleavage	roz³am
+English	Polish	avenge	pomœciæ
+English	Polish	con	przekrêt
+English	Polish	hunch	przeczucie
+English	Polish	indulge	pob³a¿aæ
+English	Polish	curfew	godzina policyjna
+English	Polish	appalling	przera¿aj¹cy
+English	Polish	haze	znêcaæ siê
+English	Polish	persistent	trwa³y
+English	Polish	residual	pozosta³y
 English	Polish	reticular	siatkowaty
 English	Polish	arousal	pobudzenie
-English	Polish	suppress	stÅ‚umiÄ‡
-English	Polish	nuisance	kÅ‚opot
-English	Polish	plasticity	plastycznoÅ›Ä‡
+English	Polish	suppress	st³umiæ
+English	Polish	nuisance	k³opot
+English	Polish	plasticity	plastycznoœæ
 English	Polish	convolutional	splotowy
-English	Polish	attenuate	osÅ‚abiaÄ‡
+English	Polish	attenuate	os³abiaæ
 English	Polish	rhinal	nosowy
 English	Polish	consolidation	umacnianie
 English	Polish	acquisition	nabycie
-English	Polish	cue	wskazÃ³wka
+English	Polish	cue	wskazówka
 English	Polish	vigilant	czujny
-English	Polish	vicinity	sÄ…siedztwo
+English	Polish	vicinity	s¹siedztwo
 English	Polish	aberrant	anormalny
-English	Polish	onset	poczÄ…tek
-English	Polish	interfere	kolidowaÄ‡
-English	Polish	disrupt	zakÅ‚Ã³caÄ‡
-English	Polish	insulate	izolowaÄ‡
+English	Polish	onset	pocz¹tek
+English	Polish	interfere	kolidowaæ
+English	Polish	disrupt	zak³ócaæ
+English	Polish	insulate	izolowaæ
 English	Polish	focal	ogniskowy
-English	Polish	perturb	zaburzyÄ‡
-English	Polish	transient	przejÅ›ciowy
-English	Polish	significant	znaczÄ…cy
-English	Polish	salient	wyrÃ³Å¼niajÄ…cy siÄ™
+English	Polish	perturb	zaburzyæ
+English	Polish	transient	przejœciowy
+English	Polish	significant	znacz¹cy
+English	Polish	salient	wyró¿niaj¹cy siê
 English	Polish	susceptible	podatny
 English	Polish	lesion	zmiana chorobowa
-English	Polish	derive	czerpaÄ‡
-English	Polish	tease	droczyÄ‡ siÄ™
+English	Polish	derive	czerpaæ
+English	Polish	tease	droczyæ siê
 English	Polish	intact	nienaruszony
-Polish	English	pÅ‚ytki	shallow
-English	Polish	reluctant	niechÄ™tny
+Polish	English	p³ytki	shallow
+English	Polish	reluctant	niechêtny
 English	Polish	prevalent	rozpowszechniony
-English	Polish	amplify	wzmacniaÄ‡
-English	Polish	threshold	prÃ³g
-English	Polish	confine	ograniczaÄ‡
-English	Polish	diminish	zmniejszaÄ‡
+English	Polish	amplify	wzmacniaæ
+English	Polish	threshold	próg
+English	Polish	confine	ograniczaæ
+English	Polish	diminish	zmniejszaæ
 English	Polish	decremental	spadkowy
-English	Polish	knob	pokrÄ™tÅ‚o
+English	Polish	knob	pokrêt³o
 English	Polish	encase	oblec
-English	Polish	elucidate	wyjaÅ›niaÄ‡
-English	Polish	intricate	zawiÅ‚y
+English	Polish	elucidate	wyjaœniaæ
+English	Polish	intricate	zawi³y
 English	Polish	grid	krata
 English	Polish	cortical	korowa
 English	Polish	pituitary	przysadka
-English	Polish	endocrine system	ukÅ‚ad hormonalny
-English	Polish	relay	przekazaÄ‡
-English	Polish	straddle	rozkraczyÄ‡ siÄ™
-English	Polish	auditory	sÅ‚uchowy
+English	Polish	endocrine system	uk³ad hormonalny
+English	Polish	relay	przekazaæ
+English	Polish	straddle	rozkraczyæ siê
+English	Polish	auditory	s³uchowy
 English	Polish	cranial	czaszkowy
 English	Polish	smack dab	smack dab
 English	Polish	prominent	wybitny
-English	Polish	gland	gruczoÅ‚
+English	Polish	gland	gruczo³
 English	Polish	tract	obszar
-English	Polish	allotment	przydziaÅ‚
-English	Polish	deduct	odjÄ…Ä‡
+English	Polish	allotment	przydzia³
+English	Polish	deduct	odj¹æ
 English	Polish	levied	pobrany
 English	Polish	substantial	znaczny
 English	Polish	rigid	sztywny
@@ -62,54 +80,54 @@ English	Polish	convicted	skazany
 English	Polish	lumpy	grudkowaty
 English	Polish	albumin	albumina
 English	Polish	saturated	nasycony
-English	Polish	resilience	sprÄ™Å¼ystoÅ›Ä‡
-English	Polish	distinct	odrÄ™bny
-English	Polish	profound	gÅ‚Ä™boki
+English	Polish	resilience	sprê¿ystoœæ
+English	Polish	distinct	odrêbny
+English	Polish	profound	g³êboki
 English	Polish	sassy	impertynencki
 English	Polish	contempt	pogarda
-English	Polish	vocation	powoÅ‚anie
-English	Polish	relentless	bezwzglÄ™dny
-English	Polish	confound	zawieÅ›Ä‡
-English	Polish	tainted	skaÅ¼ony
-English	Polish	to arouse someone	podnieciÄ‡ kogoÅ›
+English	Polish	vocation	powo³anie
+English	Polish	relentless	bezwzglêdny
+English	Polish	confound	zawieœæ
+English	Polish	tainted	ska¿ony
+English	Polish	to arouse someone	podnieciæ kogoœ
 English	Polish	conviction	przekonanie
-English	Polish	successor	nastÄ™pca
+English	Polish	successor	nastêpca
 English	Polish	attuned	przystosowany
 English	Polish	principle	zasada
-English	Polish	gratitude	wdziÄ™cznoÅ›Ä‡
-English	Polish	compassion	wspÃ³Å‚czucie
-English	Polish	contribute	przyczyniÄ‡ siÄ™
-English	Polish	retrieve	odzyskaÄ‡
-English	Polish	yield	przynieÅ›Ä‡
+English	Polish	gratitude	wdziêcznoœæ
+English	Polish	compassion	wspó³czucie
+English	Polish	contribute	przyczyniæ siê
+English	Polish	retrieve	odzyskaæ
+English	Polish	yield	przynieœæ
 English	Polish	relevant	stosowny
 English	Polish	welfare	dobrobyt
-English	Polish	solely	wyÅ‚Ä…cznie
-English	Polish	slack	luÅºny
-English	Polish	invoke	odwoÅ‚aÄ‡ siÄ™
+English	Polish	solely	wy³¹cznie
+English	Polish	slack	luŸny
+English	Polish	invoke	odwo³aæ siê
 English	Polish	deliberate	celowy
 English	Polish	constraints	ograniczenia
-English	Polish	capacity	PojemnoÅ›Ä‡
+English	Polish	capacity	Pojemnoœæ
 English	Polish	feasible	wykonalny
 English	Polish	divine	boski
 English	Polish	eternal	wieczny
 English	Polish	plausible	wiarygodny
-English	Polish	anguished	udrÄ™czony
+English	Polish	anguished	udrêczony
 English	Polish	superficial	powierzchowny
-English	Polish	contaminate	zanieczyÅ›ciÄ‡
-English	Polish	distinguish	rozrÃ³Å¼niaÄ‡
-English	Polish	invincible	niezwyciÄ™Å¼ony
-English	Polish	claim	domagaÄ‡ siÄ™
-English	Polish	insist	obstawaÄ‡
-English	Polish	stumpy	krÄ™py
+English	Polish	contaminate	zanieczyœciæ
+English	Polish	distinguish	rozró¿niaæ
+English	Polish	invincible	niezwyciê¿ony
+English	Polish	claim	domagaæ siê
+English	Polish	insist	obstawaæ
+English	Polish	stumpy	krêpy
 English	Polish	hothead	porywczy
 English	Polish	solace	pociecha
 English	Polish	landlord	gospodarz
-English	Polish	emanate	pochodziÄ‡
-English	Polish	assumption	zaÅ‚oÅ¼enie
+English	Polish	emanate	pochodziæ
+English	Polish	assumption	za³o¿enie
 English	Polish	wrath	gniew
-English	Polish	greed	chciwoÅ›Ä‡
-English	Polish	back off	wycofaÄ‡
-English	Polish	survey	przeglÄ…d
-English	Polish	omission	pominiÄ™cie
-English	Polish	reveal	odsÅ‚oniÄ‡
+English	Polish	greed	chciwoœæ
+English	Polish	back off	wycofaæ
+English	Polish	survey	przegl¹d
+English	Polish	omission	pominiêcie
+English	Polish	reveal	ods³oniæ
 English	Polish	gaps in the data	braki w danych

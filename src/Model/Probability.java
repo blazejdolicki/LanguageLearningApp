@@ -1,4 +1,4 @@
-package Backend;
+package Model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,6 +35,7 @@ public class Probability {
                 double probability=array[x];
                 if(probability>=0){
                     probability=array[x]*0.8;
+                    probability = Math.round(probability*100)/100.0;
                 }
                 writer.print(probability+" ");
             }

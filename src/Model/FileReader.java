@@ -1,9 +1,8 @@
-package Backend;
+package Model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class FileReader {
         File file = new File("Slownik.txt");
 
         try{
-            Scanner input = new Scanner(file);
+            Scanner input = new Scanner(file,"Cp1250");
             ArrayList<String> firstLanguageList = new ArrayList<>();
             ArrayList<String> secondLanguageList = new ArrayList<>();
             String firstLanguage = input.next();
@@ -27,7 +26,7 @@ public class FileReader {
 
                 String english = parts[parts.length-2];
                 String polish = parts[parts.length-1];
-
+                System.out.println(polish);
                 secondLanguageList.add(polish);
                 firstLanguageList.add(english);
                 x++;

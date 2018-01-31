@@ -1,22 +1,18 @@
-package GUI;
+package View;
 
-import Backend.Exercise;
-import Backend.FileReader;
+import Model.Exercise;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import sun.awt.image.ImageWatched;
 
-import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 
 public class ResultsView extends GridPane{
@@ -73,9 +69,9 @@ public class ResultsView extends GridPane{
 
         add(summaryLabel,1,words.size()+3);
 
-        Button submit = new Button("Submit");
-        submit.setMinSize(150, 50);
-        submit.setOnAction(new EventHandler<ActionEvent>() {
+        Button again = new Button("Again");
+        again.setMinSize(150, 50);
+        again.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
                 Exercise.setNumberOfAllClues(0);
@@ -85,13 +81,23 @@ public class ResultsView extends GridPane{
                 Main.getStage().setScene(new Scene(newExerciseView));
             }
         });
-        add(submit, 1, words.size()+4);
+        add(again, 1, words.size()+4);
 
+        Button backToMenu = new Button("Back to menu");
+        backToMenu.setMinSize(150, 50);
+        backToMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                MenuView menu = new MenuView();
+                Main.getStage().setScene(new Scene(menu));
+            }
+        });
+        add(backToMenu, 2, words.size()+4);
 
 
         setAlignment(Pos.CENTER);
 
-        setHalignment(submit, HPos.CENTER);
+        setHalignment(again, HPos.CENTER);
         setVgap(20);
         setHgap(10);
     }

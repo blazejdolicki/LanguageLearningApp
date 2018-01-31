@@ -1,4 +1,4 @@
-package Backend;
+package Model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-import GUI.CustomLabel;
+import View.CustomLabel;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
@@ -22,11 +22,22 @@ public class Exercise{
     private static ArrayList<Integer> indicesWhereCluesUsed = new ArrayList<>();
     private static int numberOfAllClues=0;
 
-
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String fromLanguageString, String toLanguageString) throws FileNotFoundException {
         randomIndices = new ArrayList<>();
         words = new LinkedHashMap<>();
         FileReader fileReader = new FileReader();
+        System.out.println("a"+fromLanguageString+"a");
+        for(String key:fileReader.getLanguagesList().keySet()){
+            System.out.println("a"+key+"b");
+            if(key.equals(fromLanguageString)){
+                System.out.println("Equals");
+            }
+            else{
+                System.out.println("Doesnt equal");
+            }
+            System.out.println(fileReader.getLanguagesList().get(key).size());
+        }
+
         ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
         ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
 
@@ -37,7 +48,7 @@ public class Exercise{
         }
 
 
-        Scanner input2 = new Scanner(System.in,"Cp852");
+        Scanner input2 = new Scanner(System.in);
 
         for (int i = 0; i<numberOfWords; i++){
             double p = Math.random();

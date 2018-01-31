@@ -1,23 +1,17 @@
-package GUI;
+package View;
 
-import Backend.FileReader;
+import Model.FileReader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 
-import javax.xml.soap.Text;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class PrepareExerciseView extends GridPane{
     private static String fromValue, toValue;
@@ -73,6 +67,7 @@ public class PrepareExerciseView extends GridPane{
         submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
+                setValues(fromComboBox,toComboBox);
                 checkAndRun(inputNumber, errorLabel, fromComboBox, toComboBox);
             }
         });
@@ -134,7 +129,7 @@ public class PrepareExerciseView extends GridPane{
                 else{
                     fromLanguage = (String) fromComboBox.getValue();
                 }
-
+                System.out.println("from "+fromLanguage+" to "+toLanguage);
                 ExerciseView exerciseView = new ExerciseView(n, fromLanguage, toLanguage);
                 Main.getStage().setScene(new Scene(exerciseView));
             }
