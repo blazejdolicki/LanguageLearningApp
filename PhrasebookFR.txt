@@ -1,0 +1,17 @@
+French	English	et puis	and then
+French	English	dehors	outside
+French	English	sauf	except
+French	English	coussin	cushion
+French	English	mordre	bite
+French	English	moitié	half
+French	English	suivre	to follow
+French	English	injuste	unfair
+French	English	c'est dommage	it's a shame
+French	English	bec	beak
+French	English	corbeau	raven
+French	English	parfait	perfect
+French	English	rigoler	laugh
+French	English	soupir	sigh
+French	English	sourcil	eyebrow
+French	English	crier	yell
+French	English	sifflet	whistle

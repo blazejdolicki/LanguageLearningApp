@@ -25,13 +25,18 @@ public class PrepareTranslatorView extends GridPane{
         private static String fromValue, toValue, inputWord;
 
         public PrepareTranslatorView() {
-            FileReader fileReader = new FileReader();
 
             CustomLabel translateFrom = new CustomLabel("Translate from: ");
             add(translateFrom,0,0);
 
+            ArrayList<String> languages = new ArrayList<>();
+            languages.add("English");
+            languages.add("French");
+            languages.add("Polish");
+
             ComboBox fromComboBox = new ComboBox();
-            for(String language:fileReader.getLanguagesList().keySet()){
+            // before languages: fileReader.getLanguagesList().keySet()
+            for(String language:languages){
                 fromComboBox.getItems().add(language);
             }
 
@@ -41,7 +46,7 @@ public class PrepareTranslatorView extends GridPane{
             add(translateTo,0,1);
 
             ComboBox toComboBox = new ComboBox();
-            for(String language:fileReader.getLanguagesList().keySet()){
+            for(String language:languages){
                 toComboBox.getItems().add(language);
             }
             toComboBox.setPromptText("Polish");
@@ -154,7 +159,15 @@ public class PrepareTranslatorView extends GridPane{
                     fromLanguageString = (String) fromComboBox.getValue();
                 }
                 //tu napisz metode ktora translatuje
-                FileReader fileReader = new FileReader();
+                String fileName;
+                if(fromLanguageString=="French"||toLanguageString=="French"){
+                    fileName = "PhrasebookFR";
+                }
+                else{
+                    fileName = "Phrasebook";
+                }
+
+                FileReader fileReader = new FileReader(fileName);
                 ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
                 ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
                 inputWord = inputText.getText();

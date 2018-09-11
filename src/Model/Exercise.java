@@ -26,11 +26,19 @@ public class Exercise{
     private static ArrayList<String> correctAnswersList = new ArrayList<>();
     private static ArrayList<Integer> indicesWhereCluesUsed = new ArrayList<>();
     private static int numberOfAllClues=0;
-
+    public static String fileName;
     public static LinkedHashMap<String,String> printExercise(int numberOfWords, String fromLanguageString, String toLanguageString) throws FileNotFoundException {
         randomIndices = new ArrayList<>();
         words = new LinkedHashMap<>();
-        FileReader fileReader = new FileReader();
+
+        if(fromLanguageString=="French"||toLanguageString=="French"){
+            fileName = "PhrasebookFR";
+        }
+        else{
+            fileName = "Phrasebook";
+        }
+
+        FileReader fileReader = new FileReader(fileName);
 
 
         ArrayList<String> fromLanguage = fileReader.getLanguagesList().get(fromLanguageString);
@@ -70,7 +78,7 @@ public class Exercise{
     }
 
     public static CustomLabel[][] results(String toLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) {
-        FileReader fileReader = new FileReader();
+        FileReader fileReader = new FileReader(fileName);
         ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
         int numberOfWords = words.size();
 
@@ -164,7 +172,7 @@ public class Exercise{
     }
 
     public static CustomLabel[] correctAnswers(String toLanguageString, LinkedHashMap<String, String> words) {
-        FileReader fileReader = new FileReader();
+        FileReader fileReader = new FileReader(fileName);
         ArrayList<String> toLanguage = fileReader.getLanguagesList().get(toLanguageString);
         int numberOfWords = words.size();
 

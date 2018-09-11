@@ -13,9 +13,9 @@ import java.util.Scanner;
  */
 public class FileReader {
     private LinkedHashMap<String, ArrayList<String>> languagesList;
-    public FileReader() {
+    public FileReader(String fileName) {
         languagesList = new LinkedHashMap<>();
-        File file = new File("Slownik.txt");
+        File file = new File(fileName+".txt");
 
         try{
             Scanner input = new Scanner(file,"Cp1250");

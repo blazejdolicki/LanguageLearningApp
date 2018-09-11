@@ -17,7 +17,7 @@ public class Probability {
     public static double[] readProbabilityArray(int dictionarySize) {
         double[] probabilityArray = new double[dictionarySize];
         try{
-            File file = new File("Probability.txt");
+            File file = new File("ProbabilityFR.txt");
             Scanner input = new Scanner(file).useLocale(Locale.US);
             int x=0;
 

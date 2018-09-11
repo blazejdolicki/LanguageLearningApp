@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,13 +23,16 @@ import java.io.FileNotFoundException;
 public class PrepareExerciseView extends GridPane{
     private static String fromValue, toValue;
     public PrepareExerciseView() throws FileNotFoundException{
-        FileReader fileReader = new FileReader();
 
         CustomLabel translateFrom = new CustomLabel("Translate from: ");
         add(translateFrom,0,0);
 
         ComboBox fromComboBox = new ComboBox();
-        for(String language:fileReader.getLanguagesList().keySet()){
+        ArrayList<String> languages = new ArrayList<>();
+        languages.add("English");
+        languages.add("French");
+        languages.add("Polish");
+        for(String language:languages){
             fromComboBox.getItems().add(language);
         }
 
@@ -38,7 +42,8 @@ public class PrepareExerciseView extends GridPane{
         add(translateTo,0,1);
 
         ComboBox toComboBox = new ComboBox();
-        for(String language:fileReader.getLanguagesList().keySet()){
+        // previously instead of languages: fileReader.getLanguagesList().keySet()
+        for(String language:languages){
             toComboBox.getItems().add(language);
         }
         toComboBox.setPromptText("Polish");
