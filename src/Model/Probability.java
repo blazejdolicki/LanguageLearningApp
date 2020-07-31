@@ -17,7 +17,7 @@ public class Probability {
     public static double[] readProbabilityArray(int dictionarySize) {
         double[] probabilityArray = new double[dictionarySize];
         try{
-            File file = new File("ProbabilityFR.txt");
+            File file = new File("Probability.txt");
             Scanner input = new Scanner(file).useLocale(Locale.US);
             int x=0;
 
@@ -42,6 +42,7 @@ public class Probability {
                 if(probability>=0){
                     probability=array[x]*0.8;
                     probability = Math.round(probability*100)/100.0;
+                    System.out.println("Non-zero probability");
                 }
                 writer.print(probability+" ");
             }

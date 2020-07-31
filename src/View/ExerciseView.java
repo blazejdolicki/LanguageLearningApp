@@ -96,7 +96,7 @@ public class ExerciseView extends GridPane{
 
 
 
-
+        this.setHgap(50);
         setAlignment(Pos.CENTER);
         setHalignment(submit, HPos.CENTER);
         setVgap(10);

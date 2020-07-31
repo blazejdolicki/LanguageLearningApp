@@ -45,6 +45,24 @@ public class MenuView extends GridPane{
          add(exercise, 0, 1);
         setHalignment(exercise, HPos.CENTER);
 
+
+        Button sentences = new Button("Fill gaps in sentences");
+        sentences.setFont(Font.font("Verdana",FontWeight.NORMAL,23));
+        sentences.setMinSize(250,80);
+        sentences.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                // test parameters, should be made generic later on
+                SentencesView sentencesView = new SentencesView(5,"English","Polish",3);
+                Main.getStage().setScene(new Scene(sentencesView));
+            }
+
+        });
+
+        add(sentences, 0,2);
+        setHalignment(sentences, HPos.CENTER);
+
+
         Button translateWord = new Button("Translate word");
         translateWord.setFont(Font.font("Verdana",FontWeight.NORMAL,23));
         translateWord.setMinSize(250,80);
@@ -57,7 +75,7 @@ public class MenuView extends GridPane{
 
         });
 
-        add(translateWord, 0,2);
+        add(translateWord, 0,3);
         setHalignment(translateWord, HPos.CENTER);
 
         setAlignment(Pos.CENTER);

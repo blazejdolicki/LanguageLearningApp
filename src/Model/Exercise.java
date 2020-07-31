@@ -19,6 +19,11 @@ import javafx.scene.paint.Color;
 public class Exercise{
     private static int numberOfClues=0;
     private static Random random = new Random();
+
+    public static ArrayList<Integer> getRandomIndices() {
+        return randomIndices;
+    }
+
     private static ArrayList<Integer> randomIndices;
     private static LinkedHashMap<String, String> words;
     private static double correctCounter=0;
@@ -55,6 +60,7 @@ public class Exercise{
 
         for (int i = 0; i<numberOfWords; i++){
             double p = Math.random();
+            System.out.println("Print "+(fromLanguage.size()-1));
             int randomIndex = random.nextInt(fromLanguage.size()-1);
             double probabilityCoefficient=0.0;
             if(probabilityArray[randomIndex]!=0.0){
@@ -76,6 +82,8 @@ public class Exercise{
         input2.close();
         return words;
     }
+
+//    public static
 
     public static CustomLabel[][] results(String toLanguageString, LinkedHashMap<String, String> words, TextField[] textFields) {
         FileReader fileReader = new FileReader(fileName);
@@ -118,9 +126,9 @@ public class Exercise{
                 else{
                     double value = probabilityArray[globalIndex];
                     probabilityArray[globalIndex]=value+1;
-
-
                 }
+                System.out.println(userInput+" word "+probabilityArray[globalIndex]+"probability");
+
                 userAnswers[x]= new CustomLabel("Your answers was correct!");
 
             }
