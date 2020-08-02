@@ -27,7 +27,7 @@ public class MenuView extends GridPane{
         add(mainMenu,0,0);
         setHalignment(mainMenu, HPos.CENTER);
 
-        Button exercise = new Button("Exercise");
+        Button exercise = new Button("Translate words");
         exercise.setFont(Font.font("Verdana",FontWeight.NORMAL,23));
         exercise.setMinSize(250, 80);
         exercise.setOnAction(new EventHandler<ActionEvent>() {
@@ -75,7 +75,7 @@ public class MenuView extends GridPane{
 
         });
 
-        add(translateWord, 0,3);
+//        add(translateWord, 0,3);
         setHalignment(translateWord, HPos.CENTER);
 
         setAlignment(Pos.CENTER);

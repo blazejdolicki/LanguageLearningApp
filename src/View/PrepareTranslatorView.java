@@ -64,7 +64,7 @@ public class PrepareTranslatorView extends GridPane{
             add(swap, 1, 2);
 
             CustomLabel inputLabel = new CustomLabel("Translate word: ");
-            add(inputLabel,0,3);
+//            add(inputLabel,0,3);
 
             TextField inputText = new TextField();
             inputText.setMinWidth(100);
